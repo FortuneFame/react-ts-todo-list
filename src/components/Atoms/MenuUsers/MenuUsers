@@ -1,0 +1,31 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { UserState } from '../../../store/types/user.types';
+import { setCurrentUser } from '../../../store/actions/user.action';
+import { RootState } from '../redux/root; // Adjust this import based on your store configuration
+
+const MenuUsers: React.FC = () => {
+  const { allUsers } = useSelector<RootState, UserState>((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+  const handleUserChange = (user: User) => {
+    dispatch(setCurrentUser(user));
+  };
+
+  return (
+    <nav>
+      <ul>
+        {allUsers.map((user: User) => (
+          <li key={user.id}>
+            <Link to="/todos" onClick={() => handleUserChange(user)}>
+              {user.firstName} {user.lastName}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
+
+export default MenuUsers;

@@ -2,8 +2,8 @@ import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Button, Checkbox } from '@mui/material';
-import { EDIT_TASK, REMOVE_TASK, TOGGLE_TASK } from '../../store/constants';
-import { TaskItem } from '../../store/types/todo.types';
+import { EDIT_TASK, REMOVE_TASK, TOGGLE_TASK } from '../../../store/constants';
+import { TaskItem } from '../../../store/types/todo.types';
 
 type TaskProps = {
     task: TaskItem ;
@@ -28,6 +28,7 @@ const Task: FC<TaskProps> = ({ task }) => {
             />
             <div>
                 <h3>{task.title}</h3>
+                <p>{task.type}</p> {/* Добавить отображение типа задания */}
                 {isEditing ? (
                     <div>
                         <input type="text" value={content} onChange={e => setContent(e.target.value)} />

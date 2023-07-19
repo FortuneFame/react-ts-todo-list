@@ -1,13 +1,13 @@
 import React from 'react';
 
-import MenuUsers from '../Atoms/MenuUsers/MenuUsers';
+// import MenuUsers from '../Atoms/MenuUsers/MenuUsers';
 
 const Header: React.FC = () => {
 
     return (
         <header>
             <nav>
-                <MenuUsers/>
+                {/* <MenuUsers/> */}
             </nav>
         </header>
     );

@@ -1,4 +1,4 @@
-import { TaskState } from "./todo.types";
+import { TaskItem, TaskState } from "./todo.types";
 
 export interface UserState {
   currentUser: {
@@ -13,8 +13,11 @@ export interface UserState {
   }[];
 }
 
-
 export interface RootState {
     taskReducer: TaskState;
     userReducer: UserState;
+}
+
+export interface UserTasksState {
+  [userId: string]: TaskItem[];
 }
