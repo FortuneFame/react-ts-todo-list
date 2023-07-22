@@ -1,5 +1,5 @@
 import { ADD_TASK, EDIT_TASK, LOAD_TODOS, REMOVE_TASK, SET_FILTER, TOGGLE_TASK } from '../constants';
-import { TaskItem } from '../types/todo.types';
+import { TaskItem } from '../types/task.types';
 
 interface AddTaskAction {
     type: typeof ADD_TASK;
@@ -28,7 +28,9 @@ interface EditTaskAction {
     type: typeof EDIT_TASK;
     payload: {
         id: string;
-        content: string;
+        title?: string;
+        name?: string;
+        content?: string;
     };
 }
 

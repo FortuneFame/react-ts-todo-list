@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { ADD_TASK, LOAD_TODOS, SET_USER } from '../../store/constants';
-import { TaskItem, TaskType } from '../../store/types/todo.types';
+import { TaskItem, TaskType } from '../../store/types/task.types';
 import { RootState } from '../../store/types/state.types';
 import HomeWorkTaskPage from './HomeWorkTaskPage/HomeWorkTaskPage';
 import FreelanceTaskPage from './FreelanceTaskPage/FreelanceTaskPage';

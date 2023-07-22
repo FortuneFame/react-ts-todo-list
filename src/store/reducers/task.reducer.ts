@@ -1,4 +1,4 @@
-import { TaskInitialState, TaskState } from "../types/todo.types";
+import { TaskInitialState, TaskState } from "../types/task.types";
 import { ADD_TASK, EDIT_TASK, LOAD_TODOS, REMOVE_TASK, SET_FILTER, TOGGLE_TASK } from "../constants";
 import { TaskActionTypes } from "../actions/task.action";
 
@@ -35,11 +35,20 @@ const taskReducer = (state = TaskInitialState, action: TaskActionTypes): TaskSta
         filteredTasks
       }
     case EDIT_TASK:
-      return {
+    return {
         ...state,
-        tasks: state.tasks.map(task =>
-          task.id === action.payload.id ? { ...task, content: action.payload.content } : task)
-      }
+        tasks: state.tasks.map(task => {
+            if (task.id === action.payload.id) {
+                return { 
+                    ...task, 
+                    title: action.payload.title ?? task.title, 
+                    name: action.payload.name ?? task.name,
+                    content: action.payload.content ?? task.content 
+                }
+            }
+            return task;
+        })
+    }
     case LOAD_TODOS:
       return {
         ...state,

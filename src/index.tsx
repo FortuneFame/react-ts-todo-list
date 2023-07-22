@@ -9,6 +9,10 @@ import TaskList from './pages/Todos/TaskList/TaskList';
 import HomeWorkTaskPage from './pages/Todos/HomeWorkTaskPage/HomeWorkTaskPage';
 import FreelanceTaskPage from './pages/Todos/FreelanceTaskPage/FreelanceTaskPage';
 import OfficeTaskPage from './pages/Todos/OfficeTaskPage/OfficeTaskPage';
+import UserList from './pages/UserList/UserList';
+import UserDetails from './pages/UserList/UserDetails/UserDetails';
+import Comments from './pages/Reviews/Comments';
+import CommentSingle from './pages/Reviews/CommentSingle/CommentSingle';
 
 const router = createBrowserRouter([
   {
@@ -43,19 +47,24 @@ const router = createBrowserRouter([
             path: 'office',
             element: <OfficeTaskPage />,
           },
-          // {
-//         path: "/user",
-//         element: <UserList />,
-//         children: [
-//           {
-//             path: ':userId/tasks',
-//             element: <UserTasks />,
-//           },
-//           {
-//             path: ':userId',
-//             element: <UserDetails />,
-//           },
         ]
+      },
+      {
+        path: "users",
+        element: <UserList />,
+      },
+      {
+        path: 'user/:userId',
+        element: <UserDetails />,
+      },
+    
+      {
+        path: "reviews",
+        element: <Comments />,
+      },
+      {
+        path: "reviews/:id",
+        element: <CommentSingle />,
       },
     ]
   }

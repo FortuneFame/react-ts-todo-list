@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { RootState } from '../store/types/state.types';
-import { TaskItem, TaskType } from '../store/types/todo.types';
+import { TaskItem, TaskType } from '../store/types/task.types';
 
 const getTasks = (state: RootState) => state.taskReducer.tasks;
 const getUserId = (state: RootState) => state.userReducer.currentUser?.id;

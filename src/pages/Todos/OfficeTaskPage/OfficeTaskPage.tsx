@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/types/state.types';
-import { TaskItem } from '../../../store/types/todo.types';
+import { TaskItem } from '../../../store/types/task.types';
 import TaskList from '../TaskList/TaskList';
 
 const OfficeTaskPage: React.FC = () => {

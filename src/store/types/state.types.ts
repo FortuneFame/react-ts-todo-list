@@ -1,4 +1,7 @@
-import { TaskItem, TaskState } from "./todo.types";
+import { ReviewComment, ReviewSingleComment } from "./reviews.types";
+import { TaskItem, TaskState } from "./task.types";
+import { UserTask } from "./user-task.types";
+import { User } from "./user.types";
 
 export interface UserState {
   currentUser: {
@@ -20,4 +23,19 @@ export interface RootState {
 
 export interface UserTasksState {
   [userId: string]: TaskItem[];
+}
+
+export type AppState = {
+  userReducer: {
+    currentUser: User;
+  };
+  userTaskReducer: UserTask[]; 
+};
+
+export interface CommentRootState {
+  commentsReducer: {
+    comments: ReviewComment[];
+    singleComment: ReviewSingleComment | null;
+  };
+  userTaskReducer: UserTasksState;
 }

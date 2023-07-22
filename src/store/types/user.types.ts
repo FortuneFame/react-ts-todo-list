@@ -9,8 +9,3 @@ export interface User {
   firstName: string;
   lastName: string;
 }
-
-export interface UserState {
-  currentUser: User | null;
-  allUsers: User[];
-}
