@@ -43,75 +43,23 @@ const router = createBrowserRouter([
             path: 'office',
             element: <OfficeTaskPage />,
           },
+          // {
+//         path: "/user",
+//         element: <UserList />,
+//         children: [
+//           {
+//             path: ':userId/tasks',
+//             element: <UserTasks />,
+//           },
+//           {
+//             path: ':userId',
+//             element: <UserDetails />,
+//           },
         ]
       },
     ]
   }
 ]);
-
-
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <App />,
-//     children: [
-//       {
-//         path: '/',
-//         element: <Home />,
-//       },
-//       {
-//         path: '/start',
-//         element: <Start />,
-//       },
-//       {
-//         path: '/task-list',
-//         element: <TaskList />,
-//       },
-//       {
-//         path: "/todos",
-//         element: <Todos />,
-//         children: [
-//           {
-//             path: '/home-work',
-//             element: <HomeWorkTaskPage />,
-//           },
-//           {
-//             path: '/freelance',
-//             element: <FreelanceTaskPage />,
-//           },
-//           {
-//             path: '/office',
-//             element: <OfficeTaskPage />,
-//           },
-//         ]
-//       },
-//       //    {
-//       //   path: '/todos/home-work',
-//       //   element: <HomeWorkTaskPage />,
-//       // },
-//       //    {
-//       //   path: '/todos/freelance',
-//       //   element: <FreelanceTaskPage />,
-//       // },
-//       //    {
-//       //   path: '/todos/office',
-//       //   element: <OfficeTaskPage />,
-//       // },
-//       //    {
-//       //   path: '/add-user',
-//       //   element: <AddUser />,
-//       // },
-//       //    {
-//       //   path: '/settings',
-//       //   element: <Settings />,
-//       // },
-//       //    {
-//       //   path: '/about',
-//       //   element: <About />,
-//       // },
-//     ]
-//   }
-// ]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

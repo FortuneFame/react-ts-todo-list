@@ -5,10 +5,10 @@ export const SET_FILTER = 'SET_FILTER';
 export const EDIT_TASK = 'EDIT_TASK';
 export const LOAD_TODOS = 'LOAD_TODOS';
 export const FETCH_TASKS = 'FETCH_TASKS';
+export const CREATE_TASK = 'CREATE_TASK';
 
 export const SET_USER = 'SET_USER';
 export const ADD_USER = 'ADD_USER';
 export const SET_ALL_USERS = 'SET_ALL_USERS';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const SET_USER_TASKS = 'SET_USER_TASKS';
-export const CREATE_TASK = 'CREATE_TASK';

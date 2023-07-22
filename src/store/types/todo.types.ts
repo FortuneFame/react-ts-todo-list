@@ -19,3 +19,9 @@ export interface TaskState {
     filteredTasks: TaskItem[]; 
 }
 
+export const TaskInitialState: TaskState = {
+  todos: [],
+  tasks: [],
+  filter: 'all',
+  filteredTasks: [],
+};

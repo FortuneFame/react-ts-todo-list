@@ -1,4 +1,5 @@
 import { SET_USER, SET_ALL_USERS, SET_CURRENT_USER } from "../constants";
+import { User } from "../types/user.types";
 
 interface SetUserAction {
     type: typeof SET_USER;
@@ -10,14 +11,6 @@ interface SetAllUsersAction {
     payload: User[];
 }
 
-export type UserActionTypes = SetUserAction | SetAllUsersAction | SetCurrentUserAction;
-
-export interface User {
-    id: string;
-    firstName: string;
-    lastName: string;
-}
-
 interface SetCurrentUserAction {
   type: typeof SET_CURRENT_USER;
   payload: User;
@@ -27,3 +20,7 @@ export const setCurrentUser = (user: User): UserActionTypes => ({
   type: SET_CURRENT_USER,
   payload: user
 });
+
+export type UserActionTypes = SetUserAction | SetAllUsersAction | SetCurrentUserAction;
+
+

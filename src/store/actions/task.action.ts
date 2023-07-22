@@ -7,8 +7,11 @@ interface AddTaskAction {
 }
 
 interface RemoveTaskAction {
-    type: typeof REMOVE_TASK;
-    payload: string;
+  type: typeof REMOVE_TASK;
+  payload: {
+    userId: string;
+    taskId: string;
+  };
 }
 
 interface ToggleTaskAction {
