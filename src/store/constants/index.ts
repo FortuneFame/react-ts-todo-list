@@ -11,3 +11,4 @@ export const ADD_USER = 'ADD_USER';
 export const SET_ALL_USERS = 'SET_ALL_USERS';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const SET_USER_TASKS = 'SET_USER_TASKS';
+export const CREATE_TASK = 'CREATE_TASK';

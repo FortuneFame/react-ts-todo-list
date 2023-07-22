@@ -4,17 +4,25 @@ import { v4 as uuidv4 } from 'uuid';
 import { ADD_TASK, LOAD_TODOS, SET_USER } from '../../store/constants';
 import { TaskItem, TaskType } from '../../store/types/todo.types';
 import { RootState } from '../../store/types/state.types';
-import { getUserTasks } from '../../selectors/selectors';
-import TaskList from './TaskList/TaskList';
+import HomeWorkTaskPage from './HomeWorkTaskPage/HomeWorkTaskPage';
+import FreelanceTaskPage from './FreelanceTaskPage/FreelanceTaskPage';
+import OfficeTaskPage from './OfficeTaskPage/OfficeTaskPage';
 
 const Todos: React.FC = () => {
   const [name, setName] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [type, setType] = useState<TaskType>(TaskType.WorkFromHome); // Здесь можно выбрать тип задания по умолчанию
+  const [type, setType] = useState<TaskType>(TaskType.WorkFromHome);
+  const [currentPage, setCurrentPage] = useState('homeWork');
+
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state: RootState) => state.userReducer);
-  const todos = useSelector(getUserTasks);
+  const tasks = useSelector((state: RootState) => state.taskReducer.tasks);
+
+  
+  const handlePageChange = (page: string) => {
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
@@ -31,8 +39,8 @@ const Todos: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
+    localStorage.setItem('todos', JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -44,12 +52,25 @@ const Todos: React.FC = () => {
         title,
         content,
         checked: false,
-        type
+        type,
       };
       dispatch({ type: ADD_TASK, payload: newTask });
       setName('');
       setTitle('');
       setContent('');
+    }
+  };
+
+  const renderPageContent = () => {
+    switch (currentPage) {
+      case 'homeWork':
+        return <HomeWorkTaskPage />;
+      case 'freelance':
+        return <FreelanceTaskPage />;
+      case 'officeWork':
+        return <OfficeTaskPage />;
+      default:
+        return null;
     }
   };
 
@@ -80,7 +101,12 @@ const Todos: React.FC = () => {
         </label>
         <button type="submit">Добавить задачу</button>
       </form>
-      <TaskList />
+      <div>
+        <button onClick={() => handlePageChange('homeWork')}>Задачи по дому</button>
+        <button onClick={() => handlePageChange('freelance')}>Фриланс задачи</button>
+        <button onClick={() => handlePageChange('officeWork')}>Офисные задачи</button>
+      </div>
+      {renderPageContent()}
     </div>
   );
 };

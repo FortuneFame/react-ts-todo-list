@@ -28,7 +28,7 @@ const Task: FC<TaskProps> = ({ task }) => {
             />
             <div>
                 <h3>{task.title}</h3>
-                <p>{task.type}</p> {/* Добавить отображение типа задания */}
+                <p>{task.type}</p>
                 {isEditing ? (
                     <div>
                         <input type="text" value={content} onChange={e => setContent(e.target.value)} />
