@@ -3,11 +3,15 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/types/state.types';
 import { TaskItem } from '../../../store/types/task.types';
 import TaskList from '../TaskList/TaskList';
+import { Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 const HomeWorkTaskPage: React.FC = () => {
   const { tasks, filter } = useSelector((state: RootState) => state.taskReducer);
-
-  const homeWorkTasks = tasks.filter((task: TaskItem) => task.type === 'Работа по дому');
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const home = require('../../../assets/house.svg').default;
+  
+  const homeWorkTasks = tasks.filter((task: TaskItem) => task.type === 'Work From Home');
 
   let filteredTasks;
   switch (filter) {
@@ -23,10 +27,15 @@ const HomeWorkTaskPage: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>Страница задач по дому</h1>
+    <Container maxWidth={isMobile ? 'sm' : 'md'}>
+      <Typography variant={isMobile ? 'h6' : 'h4'} gutterBottom style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}>
+        Home Tasks Page
+      </Typography>
       <TaskList tasks={filteredTasks} />
-    </div>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
+        <img src={home} alt="freelance" width={'50%'} />
+      </div>
+    </Container>
   );
 };
 

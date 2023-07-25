@@ -3,11 +3,15 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/types/state.types';
 import { TaskItem } from '../../../store/types/task.types';
 import TaskList from '../TaskList/TaskList';
+import { Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 const FreelanceTaskPage: React.FC = () => {
   const { tasks, filter } = useSelector((state: RootState) => state.taskReducer);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const freelance = require('../../../assets/freelancer.svg').default;
 
-  const freelanceTasks = tasks.filter((task: TaskItem) => task.type === 'Фриланс');
+  const freelanceTasks = tasks.filter((task: TaskItem) => task.type === 'Freelance');
 
   let filteredTasks;
   switch (filter) {
@@ -23,10 +27,15 @@ const FreelanceTaskPage: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>Страница фриланс задач</h1>
+    <Container maxWidth={isMobile ? 'sm' : 'md'}>
+      <Typography variant={isMobile ? 'h6' : 'h4'} gutterBottom style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}>
+        Freelance Tasks Page
+      </Typography>
       <TaskList tasks={filteredTasks} />
-    </div>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
+        <img src={freelance} alt="freelance" width={'50%'} />
+      </div>
+    </Container>
   );
 };
 

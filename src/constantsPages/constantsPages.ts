@@ -8,10 +8,6 @@ const navLinks: { name: string; linkTo: string }[] = [
         linkTo: '/start',
     },
     {
-        name: 'About',
-        linkTo: '/about',
-    },
-    {
         name: 'Reviews',
         linkTo: '/reviews',
     },

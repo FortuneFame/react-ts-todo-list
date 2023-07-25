@@ -1,18 +1,23 @@
+import { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App';
 
-import Home from './pages/Home/Home';
-import Start from './pages/Start/Start';
-import Todos from './pages/Todos/Todos';
-import TaskList from './pages/Todos/TaskList/TaskList';
-import HomeWorkTaskPage from './pages/Todos/HomeWorkTaskPage/HomeWorkTaskPage';
-import FreelanceTaskPage from './pages/Todos/FreelanceTaskPage/FreelanceTaskPage';
-import OfficeTaskPage from './pages/Todos/OfficeTaskPage/OfficeTaskPage';
-import UserList from './pages/UserList/UserList';
-import UserDetails from './pages/UserList/UserDetails/UserDetails';
-import Comments from './pages/Reviews/Comments';
-import CommentSingle from './pages/Reviews/CommentSingle/CommentSingle';
+import './index.scss';
+import App from './App';
+import LoaderPage from './pages/LoaderPage';
+
+const Home = lazy(() => import('./pages/Home'));
+const Start = lazy(() => import('./pages/Start'));
+const Todos = lazy(() => import('./pages/Todos'));
+const TaskList = lazy(() => import('./pages/Todos/TaskList'));
+const HomeWorkTaskPage = lazy(() => import('./pages/Todos/HomeWorkTaskPage'));
+const FreelanceTaskPage = lazy(() => import('./pages/Todos/FreelanceTaskPage'));
+const OfficeTaskPage = lazy(() => import('./pages/Todos/OfficeTaskPage'));
+const UserList = lazy(() => import('./pages/UserList'));
+const UserDetails = lazy(() => import('./pages/UserList/UserDetails'));
+const Comments = lazy(() => import('./pages/Reviews'));
+const CommentSingle = lazy(() => import('./pages/Reviews/CommentSingle'));
+const NotFound = lazy(() => import('./pages/Page404'));
 
 const router = createBrowserRouter([
   {
@@ -66,6 +71,10 @@ const router = createBrowserRouter([
         path: "reviews/:id",
         element: <CommentSingle />,
       },
+      {
+        path: "*",
+        element: <NotFound />,
+      }
     ]
   }
 ]);
@@ -74,6 +83,8 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
- <RouterProvider router={router} />
+  <Suspense fallback={<LoaderPage />}>
+      <RouterProvider router={router} />
+  </Suspense>
 );
 

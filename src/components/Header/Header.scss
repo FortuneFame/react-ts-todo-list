@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  a {
+    color: #ececec;
+    text-decoration: none;
+    padding: 10px;
+
+    &:hover {
+      color: #fff;
+      border-bottom: 2px solid white;
+    }
+  }
+
+  .active {
+    border-bottom: 2px solid white;
+  }
+
+  .switch {
+    padding: 5px;
+    margin-left: 25px;
+  }
+}
+.box-mob-switch{
+  padding: 20px 16px;
+}

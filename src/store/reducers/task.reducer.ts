@@ -10,10 +10,10 @@ const taskReducer = (state = TaskInitialState, action: TaskActionTypes): TaskSta
         tasks: [...state.tasks.filter(task => task.userId === action.payload.userId), action.payload]
       };
     case REMOVE_TASK:
-      return {
+    return {
         ...state,
-        tasks: state.tasks.filter(task => task.userId !== action.payload.userId || task.id !== action.payload.taskId)
-      };
+        tasks: state.tasks.filter(task => task.userId !== action.payload.userId && task.id !== action.payload.taskId)
+    };
     case TOGGLE_TASK:
       return {
         ...state,
@@ -34,21 +34,21 @@ const taskReducer = (state = TaskInitialState, action: TaskActionTypes): TaskSta
         filter: action.payload,
         filteredTasks
       }
-    case EDIT_TASK:
-    return {
-        ...state,
-        tasks: state.tasks.map(task => {
-            if (task.id === action.payload.id) {
-                return { 
-                    ...task, 
-                    title: action.payload.title ?? task.title, 
-                    name: action.payload.name ?? task.name,
-                    content: action.payload.content ?? task.content 
-                }
-            }
-            return task;
-        })
-    }
+case EDIT_TASK:
+  return {
+      ...state,
+      tasks: state.tasks.map(task => {
+          if (task.id === action.payload.id) {
+              return { 
+                  ...task, 
+                  title: action.payload.title ?? task.title, 
+                  name: action.payload.name ?? task.name,
+                  content: action.payload.content ?? task.content 
+              }
+          }
+          return task;
+      })
+  }
     case LOAD_TODOS:
       return {
         ...state,

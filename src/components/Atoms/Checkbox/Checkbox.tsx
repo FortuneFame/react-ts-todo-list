@@ -1,11 +1,15 @@
-import { FC } from "react";
+import { FC, InputHTMLAttributes } from "react";
 
 import './Checkbox.scss'
 
-const Checkbox: FC = () => {
+interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
+    checked: boolean;
+}
+
+const Checkbox: FC<CheckboxProps> = ({ checked, ...props }) => {
     return (
         <div className="checkbox-wrapper-31">
-            <input type="checkbox" />
+            <input type="checkbox" checked={checked} {...props} />
             <svg viewBox="0 0 35.6 35.6">
                 <circle className="background" cx="17.8" cy="17.8" r="17.8"></circle>
                 <circle className="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
@@ -15,4 +19,4 @@ const Checkbox: FC = () => {
     );
 };
 
-export default Checkbox; 
+export default Checkbox;

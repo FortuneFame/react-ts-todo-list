@@ -1,0 +1,83 @@
+.home{
+    .box-welcome{
+        padding: 0 30px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: nowrap;
+        .img-welcome{
+            margin: 30px;
+            height: 100%;
+        }
+    }
+    .box-to-do{
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        img{
+            padding: 30px;
+        }
+    }
+    .box-advantages{
+        padding: 0 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        h4{
+            padding: 30px;
+        }
+        .list{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            img{
+                padding: 30px;
+            }
+            .icon-list{
+                color: #235ADB;
+            }
+            ul{
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) { 
+    .home{
+        .box-welcome,
+        .box-to-do,
+        .box-advantages{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) { 
+    .home{
+        .box-welcome,
+        .box-to-do,
+        .box-advantages{
+            display: flex;
+            flex-wrap: nowrap;
+            padding: 10px;
+            margin-bottom: 30px;
+            .img-welcome,
+            img{
+                width: 60%;
+                padding: 0;
+            }
+        }
+        .list,
+            .box-to-do{
+                align-items: center;
+                 flex-direction: column-reverse;
+            }
+    }
+
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import UserTasks from '../UserTasks/UserTasks';
+import { Box, Typography, Avatar, Button } from '@mui/material';
+import Loader from '../../../components/Atoms/Loader/Loader';
 
 interface User {
   username: string;
@@ -23,48 +25,35 @@ const UserDetails: React.FC = () => {
   }, [userId]);
 
   if (!user) {
-    return null;
+    return (
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+        <Loader />
+      </Box>
+    );
   }
 
   return (
-    <div className="single-user-container">
-      <h2>User Details</h2>
-      <div className="user-details">
-        <img
-          width="150px"
-          height="150px"
+    <Box className="single-user-container" sx={{ width: '100%', padding: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign:'center' }}>
+      <Typography variant="h2" gutterBottom>User Details:</Typography>
+      <Box className="user-details" sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom:'50px' }}>
+        <Avatar
           alt="avatar-user"
-          src={`https://randomuser.me/api/portraits/thumb/men/${
-            parseInt(user.id.toString()) % 100
-          }.jpg`}
+          src={`https://randomuser.me/api/portraits/thumb/men/${parseInt(user.id.toString()) % 100}.jpg`}
+          sx={{ width: 150, height: 150, marginBottom: 2 }}
         />
-        <div>
-          <strong>Name:</strong> {user.name}
-        </div>
-        <div>
-          <strong>Login:</strong> {user.username}
-        </div>
-        <div>
-          <strong>Email:</strong> {user.email}
-        </div>
-        <div>
-          <strong>Phone:</strong> {user.phone}
-        </div>
-        <div>
-          <strong>Web:</strong> {user.website}
-        </div>
+        <Typography><strong>Name:</strong> {user.name}</Typography>
+        <Typography><strong>Login:</strong> {user.username}</Typography>
+        <Typography><strong>Email:</strong> {user.email}</Typography>
+        <Typography><strong>Phone:</strong> {user.phone}</Typography>
+        <Typography><strong>Web:</strong> {user.website}</Typography>
         {user.address && (
-          <div>
-            <strong>Address:</strong> city: {user.address.city}, street:{' '}
-            {user.address.street}, {user.address.suite}
-          </div>
+          <Typography><strong>Address:</strong> city: {user.address.city}, street: {user.address.street}, {user.address.suite}</Typography>
         )}
-      </div>
+      </Box>
       <UserTasks />
-      <Link to="/users">Back</Link>
-    </div>
+      <Button style={{margin:'25px'}} to="/users"color= "primary" component={Link} variant="contained">Back</Button>
+    </Box>
   );
 };
 
 export default UserDetails;
-

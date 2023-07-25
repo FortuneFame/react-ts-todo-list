@@ -1,7 +1,7 @@
 export enum TaskType {
-  WorkFromHome = 'Работа по дому',
-  Freelance = 'Фриланс',
-  OfficeWork = 'Работа по офису'
+  WorkFromHome = 'Work From Home',
+  Freelance = 'Freelance',
+  OfficeWork = 'Office Work'
 }
 export interface TaskItem {
   userId: string;

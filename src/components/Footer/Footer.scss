@@ -1,0 +1,11 @@
+.footer{
+    width: 100%;
+    .icon-button{
+        &:hover{
+            border-bottom: 2px solid white;
+        }
+    }
+    .copy-right{
+        width: max-content;
+    }
+}
