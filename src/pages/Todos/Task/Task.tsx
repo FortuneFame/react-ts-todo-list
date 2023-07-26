@@ -30,6 +30,7 @@ const Task: FC<TaskProps> = ({ task }) => {
         dispatch({ type: REMOVE_TASK, payload: { userId: task.userId, taskId: task.id } });
     };
 
+
     const TaskView = (
         <div style={{ textAlign: 'center', padding: '10px', marginBottom: '20px' }} onClick={() => setIsEditing(true)}>
             <div>{task.title}</div>
