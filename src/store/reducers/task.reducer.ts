@@ -9,11 +9,6 @@ const taskReducer = (state = TaskInitialState, action: TaskActionTypes): TaskSta
         ...state,
         tasks: [...state.tasks.filter(task => task.userId === action.payload.userId), action.payload]
       };
-    // case REMOVE_TASK:
-    // return {
-    //     ...state,
-    //     tasks: state.tasks.filter(task => task.userId !== action.payload.userId && task.id !== action.payload.taskId)
-    // };
     case REMOVE_TASK:
     return {
         ...state,
